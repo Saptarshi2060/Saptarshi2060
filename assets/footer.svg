@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 110" width="900" height="110">
+  <defs>
+    <linearGradient id="bgF" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0D1117"/>
+      <stop offset="50%" style="stop-color:#161B22"/>
+      <stop offset="100%" style="stop-color:#0D1117"/>
+    </linearGradient>
+    <filter id="fglow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- BG -->
+  <rect width="900" height="110" fill="url(#bgF)"/>
+
+  <!-- Top border line with shimmer -->
+  <rect x="0" y="0" width="900" height="1" fill="#30363D"/>
+  <rect x="0" y="0" width="160" height="1" fill="#58A6FF" opacity="0.6">
+    <animate attributeName="x" values="-160;900" dur="3s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- ASCII bottom decoration -->
+  <text x="450" y="30" font-family="'JetBrains Mono',monospace"
+        font-size="9" fill="#30363D" text-anchor="middle" letter-spacing="4">
+    ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
+  </text>
+
+  <!-- Quote -->
+  <text x="450" y="58" font-family="'JetBrains Mono',monospace"
+        font-size="13" fill="#8B949E" text-anchor="middle" letter-spacing="0.5">
+    "The best code is the one that doesn't need to exist."
+  </text>
+
+  <!-- Quote author -->
+  <text x="450" y="78" font-family="'JetBrains Mono',monospace"
+        font-size="10" fill="#58A6FF" text-anchor="middle" letter-spacing="2" opacity="0.7">
+    — saptarshi biswas
+  </text>
+
+  <!-- Bottom dots -->
+  <g filter="url(#fglow)">
+    <circle cx="420" cy="98" r="1.5" fill="#58A6FF" opacity="0.5">
+      <animate attributeName="opacity" values="0.5;0.1;0.5" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="440" cy="98" r="1.5" fill="#58A6FF" opacity="0.3">
+      <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2s" begin="0.3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="460" cy="98" r="1.5" fill="#58A6FF" opacity="0.5">
+      <animate attributeName="opacity" values="0.5;0.1;0.5" dur="2s" begin="0.6s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="480" cy="98" r="1.5" fill="#58A6FF" opacity="0.3">
+      <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2s" begin="0.9s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- GitHub link suggestion text -->
+  <text x="450" y="108" font-family="'JetBrains Mono',monospace"
+        font-size="8" fill="#30363D" text-anchor="middle" letter-spacing="3">
+    github.com/Saptarshi2060
+  </text>
+
+</svg>

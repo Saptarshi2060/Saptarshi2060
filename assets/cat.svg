@@ -1,0 +1,169 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 120" width="900" height="120">
+  <!--
+    Pixel cat walking across the banner.
+    Uses animateMotion to walk left→right,
+    SMIL animate for blinking and tail wag.
+    Pixel art style: 8x8 grid scaled up.
+  -->
+  <defs>
+    <style>
+      .cat-body { fill: #C9D1D9; }
+      .cat-dark { fill: #8B949E; }
+      .cat-eye  { fill: #0D1117; }
+      .cat-blue { fill: #58A6FF; }
+      .cat-nose { fill: #FF7B9C; }
+    </style>
+    <filter id="catGlow">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background strip -->
+  <rect width="900" height="120" fill="#0D1117"/>
+  <!-- Ground line -->
+  <line x1="0" y1="105" x2="900" y2="105" stroke="#30363D" stroke-width="0.8" stroke-dasharray="4,4" stroke-opacity="0.5"/>
+  <!-- Code floaters in background -->
+  <text x="50" y="30" font-family="'JetBrains Mono',monospace" font-size="10" fill="#161B22" opacity="0.5">$ git commit -m "purr"</text>
+  <text x="500" y="50" font-family="'JetBrains Mono',monospace" font-size="10" fill="#161B22" opacity="0.4">while(true) { code(); }</text>
+  <text x="250" y="90" font-family="'JetBrains Mono',monospace" font-size="10" fill="#161B22" opacity="0.35">npm run meow</text>
+  <text x="700" y="25" font-family="'JetBrains Mono',monospace" font-size="10" fill="#161B22" opacity="0.4">console.log("meow")</text>
+  <text x="120" y="65" font-family="'JetBrains Mono',monospace" font-size="10" fill="#161B22" opacity="0.3">cat /dev/null</text>
+  <text x="600" y="80" font-family="'JetBrains Mono',monospace" font-size="10" fill="#161B22" opacity="0.35">pip install cat</text>
+
+  <!-- Paw prints left behind (decorative) -->
+  <g opacity="0.15" fill="#8B949E">
+    <ellipse cx="60" cy="103" rx="4" ry="3"/>
+    <ellipse cx="90" cy="101" rx="4" ry="3"/>
+    <ellipse cx="120" cy="103" rx="4" ry="3"/>
+    <ellipse cx="150" cy="101" rx="4" ry="3"/>
+  </g>
+
+  <!--
+    THE WALKING CAT GROUP
+    Moves across the screen on an invisible path.
+    Cat is pixel-art at 3x scale (each "pixel" = 3px).
+  -->
+  <g id="walkingCat" filter="url(#catGlow)">
+    <!-- Cat body: the whole sprite is 40w x 30h pixels conceptually -->
+    <animateMotion
+      path="M -60,0 L 960,0"
+      dur="18s"
+      repeatCount="indefinite"
+      calcMode="linear"
+    />
+
+    <!-- ── PIXEL CAT SPRITE ── -->
+    <!-- Ears -->
+    <polygon points="6,0 0,12 12,12" class="cat-body"/>
+    <polygon points="30,0 24,12 36,12" class="cat-body"/>
+    <!-- Ear inner -->
+    <polygon points="6,3 2,11 10,11" class="cat-dark" opacity="0.4"/>
+    <polygon points="30,3 26,11 34,11" class="cat-dark" opacity="0.4"/>
+
+    <!-- Head -->
+    <rect x="0" y="9" width="36" height="24" rx="8" class="cat-body"/>
+
+    <!-- Eyes (blinking with animate) -->
+    <!-- Left eye open -->
+    <ellipse cx="11" cy="18" rx="4" ry="4" fill="white"/>
+    <ellipse cx="11" cy="18" rx="2.5" ry="2.5" class="cat-eye">
+      <!-- Subtle left-right eye movement -->
+      <animate attributeName="cx" values="11;12;11;10;11" dur="5s" repeatCount="indefinite"/>
+    </ellipse>
+    <!-- Left eye blink (covers the eye) -->
+    <rect x="7" y="22" width="8" height="0" rx="2" class="cat-body">
+      <animate attributeName="height" values="0;0;0;0;0;4;0;0;0;0" dur="4s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="22;22;22;22;22;18;22;22;22;22" dur="4s" repeatCount="indefinite"/>
+    </rect>
+
+    <!-- Right eye open -->
+    <ellipse cx="25" cy="18" rx="4" ry="4" fill="white"/>
+    <ellipse cx="25" cy="18" rx="2.5" ry="2.5" class="cat-eye">
+      <animate attributeName="cx" values="25;26;25;24;25" dur="5s" repeatCount="indefinite"/>
+    </ellipse>
+    <!-- Right eye blink -->
+    <rect x="21" y="22" width="8" height="0" rx="2" class="cat-body">
+      <animate attributeName="height" values="0;0;0;0;0;4;0;0;0;0" dur="4s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="22;22;22;22;22;18;22;22;22;22" dur="4s" repeatCount="indefinite"/>
+    </rect>
+
+    <!-- Nose -->
+    <ellipse cx="18" cy="25" rx="2" ry="1.5" class="cat-nose"/>
+
+    <!-- Mouth -->
+    <path d="M 14,27 Q 18,31 22,27" stroke="#8B949E" stroke-width="1" fill="none"/>
+
+    <!-- Whiskers left -->
+    <line x1="0" y1="24" x2="-10" y2="22" stroke="#8B949E" stroke-width="0.8" opacity="0.6"/>
+    <line x1="0" y1="26" x2="-10" y2="26" stroke="#8B949E" stroke-width="0.8" opacity="0.6"/>
+    <line x1="0" y1="28" x2="-10" y2="30" stroke="#8B949E" stroke-width="0.8" opacity="0.6"/>
+    <!-- Whiskers right -->
+    <line x1="36" y1="24" x2="46" y2="22" stroke="#8B949E" stroke-width="0.8" opacity="0.6"/>
+    <line x1="36" y1="26" x2="46" y2="26" stroke="#8B949E" stroke-width="0.8" opacity="0.6"/>
+    <line x1="36" y1="28" x2="46" y2="30" stroke="#8B949E" stroke-width="0.8" opacity="0.6"/>
+
+    <!-- Body -->
+    <rect x="2" y="30" width="32" height="22" rx="8" class="cat-body"/>
+    <!-- Belly spot -->
+    <ellipse cx="18" cy="39" rx="9" ry="8" fill="white" opacity="0.4"/>
+
+    <!-- Legs (walking animation - alternate leg positions) -->
+    <!-- Front left leg -->
+    <rect x="5" y="48" width="7" height="12" rx="3" class="cat-body">
+      <animate attributeName="y" values="48;44;48;52;48" dur="0.6s" repeatCount="indefinite"/>
+    </rect>
+    <!-- Front right leg -->
+    <rect x="24" y="48" width="7" height="12" rx="3" class="cat-body">
+      <animate attributeName="y" values="48;52;48;44;48" dur="0.6s" repeatCount="indefinite"/>
+    </rect>
+    <!-- Back left leg -->
+    <rect x="8" y="48" width="6" height="11" rx="3" class="cat-dark" opacity="0.7">
+      <animate attributeName="y" values="48;52;48;44;48" dur="0.6s" repeatCount="indefinite"/>
+    </rect>
+    <!-- Back right leg -->
+    <rect x="22" y="48" width="6" height="11" rx="3" class="cat-dark" opacity="0.7">
+      <animate attributeName="y" values="48;44;48;52;48" dur="0.6s" repeatCount="indefinite"/>
+    </rect>
+
+    <!-- Tail (wagging) -->
+    <path d="M 34,35 Q 52,20 48,10" stroke="#C9D1D9" stroke-width="5" fill="none" stroke-linecap="round">
+      <animate attributeName="d"
+        values="M 34,35 Q 52,20 48,10; M 34,35 Q 55,25 52,5; M 34,35 Q 50,15 44,5; M 34,35 Q 52,20 48,10"
+        dur="1.2s" repeatCount="indefinite"/>
+    </path>
+    <!-- Tail tip blue highlight -->
+    <circle cx="48" cy="10" r="3" class="cat-blue" opacity="0.8">
+      <animate attributeName="cx" values="48;52;44;48" dur="1.2s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="10;5;5;10" dur="1.2s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Collar with tag -->
+    <rect x="4" y="31" width="28" height="5" rx="2.5" fill="#58A6FF" opacity="0.8"/>
+    <circle cx="18" cy="38" r="3" fill="#79C0FF" opacity="0.9"/>
+
+    <!-- Speech bubble (appears occasionally) -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;0;0;0;0;0;0;0;1;1;0;0;0;0;0;0" dur="18s" repeatCount="indefinite"/>
+      <rect x="40" y="-20" width="60" height="22" rx="8" fill="#161B22" stroke="#58A6FF" stroke-width="0.8"/>
+      <polygon points="44,-2 50,-2 48,6" fill="#161B22"/>
+      <text x="70" y="-4" font-family="'JetBrains Mono',monospace" font-size="8"
+            fill="#58A6FF" text-anchor="middle">*meow*</text>
+    </g>
+  </g>
+
+  <!-- Ground reflection of cat (subtle) -->
+  <g opacity="0.08">
+    <animateMotion
+      path="M -60,0 L 960,0"
+      dur="18s"
+      repeatCount="indefinite"
+      calcMode="linear"
+    />
+    <rect x="0" y="0" width="36" height="8" rx="4" fill="#58A6FF"
+          transform="translate(0,106) scale(1,-0.3)"/>
+  </g>
+</svg>

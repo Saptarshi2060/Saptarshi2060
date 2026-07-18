@@ -1,0 +1,75 @@
+name: Update README
+
+on:
+  schedule:
+    # Runs every 6 hours
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    name: Update README with latest data
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests python-dotenv
+
+      - name: Generate dynamic content
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_USERNAME: Saptarshi2060
+        run: |
+          python3 << 'EOF'
+          import requests
+          import os
+          import datetime
+
+          token = os.environ.get("GITHUB_TOKEN", "")
+          username = os.environ.get("GITHUB_USERNAME", "Saptarshi2060")
+          headers = {"Authorization": f"token {token}"}
+
+          # Fetch basic user stats
+          r = requests.get(f"https://api.github.com/users/{username}", headers=headers)
+          if r.status_code == 200:
+              data = r.json()
+              repos = data.get("public_repos", 0)
+              followers = data.get("followers", 0)
+              following = data.get("following", 0)
+              print(f"Repos: {repos}, Followers: {followers}, Following: {following}")
+
+          # Write timestamp
+          now = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=5, minutes=30)))
+          timestamp = now.strftime("%Y-%m-%d %H:%M IST")
+          with open(".last_updated", "w") as f:
+              f.write(timestamp)
+
+          print(f"Last updated: {timestamp}")
+          EOF
+
+      - name: Commit changes if any
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add -A
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore: auto-update README data [skip ci]"
+            git push
+          fi

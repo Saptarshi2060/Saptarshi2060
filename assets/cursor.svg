@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 80" width="60" height="80">
+  <defs>
+    <filter id="cursorGlow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Animated cursor - Mac-style arrow with glow -->
+  <g filter="url(#cursorGlow)">
+    <!-- Cursor body (arrow shape) -->
+    <polygon points="10,5 10,55 22,43 30,62 36,60 28,42 44,42"
+             fill="#C9D1D9" stroke="#0D1117" stroke-width="2" stroke-linejoin="round">
+      <!-- Subtle breath animation -->
+      <animate attributeName="opacity" values="0.9;1;0.9" dur="2s" repeatCount="indefinite"/>
+    </polygon>
+
+    <!-- Cursor blue accent highlight -->
+    <polygon points="10,5 10,55 22,43 30,62 36,60 28,42 44,42"
+             fill="none" stroke="#58A6FF" stroke-width="0.8" stroke-linejoin="round" opacity="0.5">
+      <animate attributeName="opacity" values="0.5;0.2;0.5" dur="2s" repeatCount="indefinite"/>
+    </polygon>
+
+    <!-- Click ripple -->
+    <circle cx="27" cy="35" r="5" fill="none" stroke="#58A6FF" stroke-width="1.5" opacity="0">
+      <animate attributeName="r" values="5;20;5" dur="2s" repeatCount="indefinite" begin="1s"/>
+      <animate attributeName="opacity" values="0;0.6;0" dur="2s" repeatCount="indefinite" begin="1s"/>
+    </circle>
+  </g>
+</svg>

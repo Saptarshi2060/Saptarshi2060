@@ -1,0 +1,167 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 360" width="300" height="360">
+  <defs>
+    <linearGradient id="cupGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1C2128"/>
+      <stop offset="100%" style="stop-color:#0D1117"/>
+    </linearGradient>
+    <linearGradient id="liquidGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3D2B1F"/>
+      <stop offset="100%" style="stop-color:#1C0F08"/>
+    </linearGradient>
+    <linearGradient id="plateGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#161B22"/>
+      <stop offset="50%" style="stop-color:#1C2128"/>
+      <stop offset="100%" style="stop-color:#161B22"/>
+    </linearGradient>
+    <filter id="coffeeGlow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="steamBlur">
+      <feGaussianBlur stdDeviation="1.5"/>
+    </filter>
+    <!-- Clip for liquid in cup -->
+    <clipPath id="cupClip">
+      <path d="M 85,155 L 95,280 Q 150,295 205,280 L 215,155 Z"/>
+    </clipPath>
+    <radialGradient id="coffeeTop" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" style="stop-color:#5C3A1E;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#2C1A0E;stop-opacity:1"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="300" height="360" fill="#0D1117"/>
+
+  <!-- Section label -->
+  <text x="150" y="28" font-family="'JetBrains Mono',monospace"
+        font-size="11" fill="#58A6FF" text-anchor="middle" letter-spacing="3">
+    ~/coffee
+  </text>
+
+  <!-- Plate / saucer -->
+  <ellipse cx="150" cy="300" rx="95" ry="15" fill="url(#plateGrad)" stroke="#30363D" stroke-width="1"/>
+  <ellipse cx="150" cy="298" rx="85" ry="10" fill="#161B22" stroke="#30363D" stroke-width="0.5"/>
+
+  <!-- Cup shadow -->
+  <ellipse cx="150" cy="302" rx="68" ry="8" fill="#000" opacity="0.5"/>
+
+  <!-- Cup body -->
+  <path d="M 85,155 L 95,285 Q 150,300 205,285 L 215,155 Z"
+        fill="url(#cupGrad)" stroke="#30363D" stroke-width="1.5"/>
+
+  <!-- Coffee liquid inside -->
+  <g clip-path="url(#cupClip)">
+    <rect x="80" y="175" width="140" height="120" fill="url(#liquidGrad)"/>
+    <!-- Coffee surface ripple -->
+    <ellipse cx="150" cy="175" rx="62" ry="8" fill="url(#coffeeTop)"/>
+    <!-- Latte art swirl on surface -->
+    <path d="M 135,172 Q 150,165 165,172 Q 155,178 150,175 Q 145,178 135,172"
+          stroke="#8B6343" stroke-width="1" fill="none" opacity="0.6"/>
+    <!-- Ripple animation -->
+    <ellipse cx="150" cy="175" rx="20" ry="3" stroke="#5C3A1E" stroke-width="1" fill="none" opacity="0">
+      <animate attributeName="rx" values="5;55;5" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.7;0;0.7" dur="3s" repeatCount="indefinite"/>
+    </ellipse>
+  </g>
+
+  <!-- Cup rim (top ellipse) -->
+  <ellipse cx="150" cy="155" rx="65" ry="10" fill="#1C2128" stroke="#30363D" stroke-width="1.5"/>
+  <!-- Inner rim -->
+  <ellipse cx="150" cy="155" rx="57" ry="8" fill="url(#liquidGrad)"/>
+
+  <!-- Cup handle -->
+  <path d="M 215,185 Q 260,185 260,220 Q 260,255 215,255"
+        stroke="#30363D" stroke-width="14" fill="none" stroke-linecap="round"/>
+  <path d="M 215,185 Q 248,185 248,220 Q 248,255 215,255"
+        stroke="url(#cupGrad)" stroke-width="10" fill="none" stroke-linecap="round"/>
+
+  <!-- Cup logo / design (monogram S) -->
+  <text x="145" y="240" font-family="'JetBrains Mono',monospace"
+        font-size="42" font-weight="700" fill="#1C2128" opacity="0.4">S</text>
+
+  <!-- Blue accent stripe on cup -->
+  <path d="M 90,200 L 210,200" stroke="#58A6FF" stroke-width="0.5" stroke-opacity="0.3"/>
+  <path d="M 87,210 L 213,210" stroke="#58A6FF" stroke-width="0.3" stroke-opacity="0.2"/>
+
+  <!-- ══ STEAM ANIMATIONS ══ -->
+  <!-- Steam wisp 1 (left) -->
+  <g opacity="0.7" filter="url(#steamBlur)">
+    <path d="M 120,148 Q 112,128 120,108 Q 128,88 120,68"
+          stroke="#8B949E" stroke-width="3" fill="none" stroke-linecap="round">
+      <animate attributeName="d"
+        values="M 120,148 Q 112,128 120,108 Q 128,88 120,68;
+                M 120,148 Q 128,128 120,108 Q 112,88 120,68;
+                M 120,148 Q 112,128 120,108 Q 128,88 120,68"
+        dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0.8;0.8;0" dur="3s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" type="translate"
+        values="0,0; 0,-10; 0,-20; 0,-30"
+        dur="3s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <!-- Steam wisp 2 (center) -->
+  <g opacity="0.6" filter="url(#steamBlur)">
+    <path d="M 150,142 Q 140,120 150,98 Q 160,76 150,54"
+          stroke="#8B949E" stroke-width="4" fill="none" stroke-linecap="round">
+      <animate attributeName="d"
+        values="M 150,142 Q 140,120 150,98 Q 160,76 150,54;
+                M 150,142 Q 162,120 150,98 Q 138,76 150,54;
+                M 150,142 Q 140,120 150,98 Q 160,76 150,54"
+        dur="3.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;1;1;0" dur="3.5s" begin="0.5s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" type="translate"
+        values="0,0; 0,-12; 0,-24; 0,-36"
+        dur="3.5s" begin="0.5s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <!-- Steam wisp 3 (right) -->
+  <g opacity="0.55" filter="url(#steamBlur)">
+    <path d="M 180,148 Q 190,126 180,104 Q 170,82 180,60"
+          stroke="#8B949E" stroke-width="3" fill="none" stroke-linecap="round">
+      <animate attributeName="d"
+        values="M 180,148 Q 190,126 180,104 Q 170,82 180,60;
+                M 180,148 Q 170,126 180,104 Q 190,82 180,60;
+                M 180,148 Q 190,126 180,104 Q 170,82 180,60"
+        dur="2.8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0.7;0.7;0" dur="2.8s" begin="1s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" type="translate"
+        values="0,0; 0,-8; 0,-18; 0,-28"
+        dur="2.8s" begin="1s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <!-- Steam particle dots -->
+  <g filter="url(#coffeeGlow)">
+    <circle cx="135" cy="100" r="2" fill="#8B949E" opacity="0">
+      <animate attributeName="cy" values="148;80;40" dur="4s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0.5;0" dur="4s" repeatCount="indefinite"/>
+      <animate attributeName="r" values="2;3;1" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="155" cy="90" r="2.5" fill="#8B949E" opacity="0">
+      <animate attributeName="cy" values="148;70;30" dur="4s" begin="1.2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0.6;0" dur="4s" begin="1.2s" repeatCount="indefinite"/>
+      <animate attributeName="r" values="2.5;4;1" dur="4s" begin="1.2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="168" cy="95" r="2" fill="#8B949E" opacity="0">
+      <animate attributeName="cy" values="148;85;45" dur="3.6s" begin="2.1s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0.4;0" dur="3.6s" begin="2.1s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Coffee stats text -->
+  <text x="150" y="328" font-family="'JetBrains Mono',monospace"
+        font-size="10" fill="#8B949E" text-anchor="middle" letter-spacing="2">
+    cup #∞  ·  fuel: maximum
+  </text>
+  <text x="150" y="346" font-family="'JetBrains Mono',monospace"
+        font-size="10" fill="#58A6FF" text-anchor="middle" letter-spacing="1" opacity="0.7">
+    "first, solve the caffeine problem."
+  </text>
+
+</svg>

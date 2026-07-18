@@ -1,0 +1,172 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 340" width="900" height="340">
+  <defs>
+    <linearGradient id="dashBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0D1117"/>
+      <stop offset="100%" style="stop-color:#161B22"/>
+    </linearGradient>
+    <linearGradient id="barBlue" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1F3A5C"/>
+      <stop offset="100%" style="stop-color:#58A6FF"/>
+    </linearGradient>
+    <linearGradient id="barGreen" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1C3A2A"/>
+      <stop offset="100%" style="stop-color:#39D353"/>
+    </linearGradient>
+    <linearGradient id="barAmber" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3A2A10"/>
+      <stop offset="100%" style="stop-color:#D29922"/>
+    </linearGradient>
+    <linearGradient id="barPurple" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2A1C3A"/>
+      <stop offset="100%" style="stop-color:#BC8CFF"/>
+    </linearGradient>
+    <linearGradient id="barRed" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3A1C1C"/>
+      <stop offset="100%" style="stop-color:#F85149"/>
+    </linearGradient>
+    <linearGradient id="barTeal" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0E2A2A"/>
+      <stop offset="100%" style="stop-color:#39C5CF"/>
+    </linearGradient>
+    <filter id="dashGlow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- BG -->
+  <rect width="900" height="340" fill="url(#dashBg)" rx="12"/>
+  <rect width="900" height="340" fill="none" stroke="#30363D" stroke-width="1" rx="12"/>
+
+  <!-- Header -->
+  <text x="40" y="45" font-family="'JetBrains Mono',monospace"
+        font-size="12" fill="#58A6FF" letter-spacing="3">~/status</text>
+  <text x="40" y="65" font-family="'JetBrains Mono',monospace"
+        font-size="11" fill="#8B949E" letter-spacing="1">
+    productivity.log  —  last updated: now
+  </text>
+
+  <!-- Divider -->
+  <line x1="40" y1="78" x2="860" y2="78" stroke="#30363D" stroke-width="0.8"/>
+
+  <!-- ══ BAR 1: Coffee Level ══ -->
+  <!-- Row Y = 108 -->
+  <!-- Icon: coffee cup emoji-like -->
+  <text x="40" y="108" font-family="'JetBrains Mono',monospace"
+        font-size="13" fill="#D29922">☕</text>
+  <text x="68" y="108" font-family="'JetBrains Mono',monospace"
+        font-size="12" fill="#C9D1D9" letter-spacing="0.5">coffee level</text>
+  <!-- Track -->
+  <rect x="220" y="96" width="580" height="14" rx="7" fill="#161B22" stroke="#30363D" stroke-width="0.8"/>
+  <!-- Fill (88%) -->
+  <rect x="220" y="96" width="0" height="14" rx="7" fill="url(#barAmber)">
+    <animate attributeName="width" values="0;511" dur="1.5s" begin="0.1s" fill="freeze" calcMode="spline"
+      keySplines="0.25 0.1 0.25 1"/>
+  </rect>
+  <!-- Percent label -->
+  <text x="812" y="107" font-family="'JetBrains Mono',monospace"
+        font-size="11" fill="#D29922" text-anchor="start">88%</text>
+  <!-- Pulse dot at end of bar -->
+  <circle cx="731" cy="103" r="4" fill="#D29922" opacity="0.8" filter="url(#dashGlow)">
+    <animate attributeName="opacity" values="0.8;0.2;0.8" dur="1.5s" repeatCount="indefinite"/>
+    <animate attributeName="r" values="4;6;4" dur="1.5s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- ══ BAR 2: Focus ══ -->
+  <!-- Row Y = 148 -->
+  <text x="40" y="148" font-family="'JetBrains Mono',monospace"
+        font-size="13" fill="#58A6FF">⚡</text>
+  <text x="68" y="148" font-family="'JetBrains Mono',monospace"
+        font-size="12" fill="#C9D1D9" letter-spacing="0.5">focus</text>
+  <rect x="220" y="136" width="580" height="14" rx="7" fill="#161B22" stroke="#30363D" stroke-width="0.8"/>
+  <rect x="220" y="136" width="0" height="14" rx="7" fill="url(#barBlue)">
+    <animate attributeName="width" values="0;435" dur="1.5s" begin="0.25s" fill="freeze" calcMode="spline"
+      keySplines="0.25 0.1 0.25 1"/>
+  </rect>
+  <text x="812" y="147" font-family="'JetBrains Mono',monospace"
+        font-size="11" fill="#58A6FF">75%</text>
+  <circle cx="655" cy="143" r="4" fill="#58A6FF" opacity="0.8" filter="url(#dashGlow)">
+    <animate attributeName="opacity" values="0.8;0.2;0.8" dur="2s" repeatCount="indefinite"/>
+    <animate attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- ══ BAR 3: Bugs Fixed ══ -->
+  <!-- Row Y = 188 -->
+  <text x="40" y="188" font-family="'JetBrains Mono',monospace"
+        font-size="13" fill="#39D353">✓</text>
+  <text x="68" y="188" font-family="'JetBrains Mono',monospace"
+        font-size="12" fill="#C9D1D9" letter-spacing="0.5">bugs fixed</text>
+  <rect x="220" y="176" width="580" height="14" rx="7" fill="#161B22" stroke="#30363D" stroke-width="0.8"/>
+  <rect x="220" y="176" width="0" height="14" rx="7" fill="url(#barGreen)">
+    <animate attributeName="width" values="0;348" dur="1.5s" begin="0.4s" fill="freeze" calcMode="spline"
+      keySplines="0.25 0.1 0.25 1"/>
+  </rect>
+  <text x="812" y="187" font-family="'JetBrains Mono',monospace"
+        font-size="11" fill="#39D353">60%</text>
+  <circle cx="568" cy="183" r="4" fill="#39D353" opacity="0.8" filter="url(#dashGlow)">
+    <animate attributeName="opacity" values="0.8;0.2;0.8" dur="1.8s" repeatCount="indefinite"/>
+    <animate attributeName="r" values="4;6;4" dur="1.8s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- ══ BAR 4: Ideas ══ -->
+  <!-- Row Y = 228 -->
+  <text x="40" y="228" font-family="'JetBrains Mono',monospace"
+        font-size="13" fill="#BC8CFF">◈</text>
+  <text x="68" y="228" font-family="'JetBrains Mono',monospace"
+        font-size="12" fill="#C9D1D9" letter-spacing="0.5">ideas</text>
+  <rect x="220" y="216" width="580" height="14" rx="7" fill="#161B22" stroke="#30363D" stroke-width="0.8"/>
+  <rect x="220" y="216" width="0" height="14" rx="7" fill="url(#barPurple)">
+    <animate attributeName="width" values="0;522" dur="1.5s" begin="0.55s" fill="freeze" calcMode="spline"
+      keySplines="0.25 0.1 0.25 1"/>
+  </rect>
+  <text x="812" y="227" font-family="'JetBrains Mono',monospace"
+        font-size="11" fill="#BC8CFF">90%</text>
+  <circle cx="742" cy="223" r="4" fill="#BC8CFF" opacity="0.8" filter="url(#dashGlow)">
+    <animate attributeName="opacity" values="0.8;0.2;0.8" dur="2.2s" repeatCount="indefinite"/>
+    <animate attributeName="r" values="4;6;4" dur="2.2s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- ══ BAR 5: Sleep ══ -->
+  <!-- Row Y = 268 -->
+  <text x="40" y="268" font-family="'JetBrains Mono',monospace"
+        font-size="13" fill="#F85149">◐</text>
+  <text x="68" y="268" font-family="'JetBrains Mono',monospace"
+        font-size="12" fill="#C9D1D9" letter-spacing="0.5">sleep</text>
+  <rect x="220" y="256" width="580" height="14" rx="7" fill="#161B22" stroke="#30363D" stroke-width="0.8"/>
+  <rect x="220" y="256" width="0" height="14" rx="7" fill="url(#barRed)">
+    <animate attributeName="width" values="0;145" dur="1.5s" begin="0.7s" fill="freeze" calcMode="spline"
+      keySplines="0.25 0.1 0.25 1"/>
+  </rect>
+  <text x="812" y="267" font-family="'JetBrains Mono',monospace"
+        font-size="11" fill="#F85149">25%</text>
+  <circle cx="365" cy="263" r="4" fill="#F85149" opacity="0.8" filter="url(#dashGlow)">
+    <animate attributeName="opacity" values="0.8;0.2;0.8" dur="1.6s" repeatCount="indefinite"/>
+    <animate attributeName="r" values="4;6;4" dur="1.6s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- ══ BAR 6: Commits Today ══ -->
+  <!-- Row Y = 308 -->
+  <text x="40" y="308" font-family="'JetBrains Mono',monospace"
+        font-size="13" fill="#39C5CF">▸</text>
+  <text x="68" y="308" font-family="'JetBrains Mono',monospace"
+        font-size="12" fill="#C9D1D9" letter-spacing="0.5">commits today</text>
+  <rect x="220" y="296" width="580" height="14" rx="7" fill="#161B22" stroke="#30363D" stroke-width="0.8"/>
+  <rect x="220" y="296" width="0" height="14" rx="7" fill="url(#barTeal)">
+    <animate attributeName="width" values="0;406" dur="1.5s" begin="0.85s" fill="freeze" calcMode="spline"
+      keySplines="0.25 0.1 0.25 1"/>
+  </rect>
+  <text x="812" y="307" font-family="'JetBrains Mono',monospace"
+        font-size="11" fill="#39C5CF">70%</text>
+  <circle cx="626" cy="303" r="4" fill="#39C5CF" opacity="0.8" filter="url(#dashGlow)">
+    <animate attributeName="opacity" values="0.8;0.2;0.8" dur="2s" repeatCount="indefinite"/>
+    <animate attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Bottom meta -->
+  <text x="860" y="330" font-family="'JetBrains Mono',monospace"
+        font-size="9" fill="#30363D" text-anchor="end">// auto-updated · live</text>
+
+</svg>
